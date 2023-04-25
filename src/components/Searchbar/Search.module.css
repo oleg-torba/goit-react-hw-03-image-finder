@@ -1,0 +1,33 @@
+.form{
+    justify-content: center;
+    padding-top: 20px;
+    display: flex;
+}
+
+input{
+    width: 50%;
+    height: 33px;
+    border: 1px solid #02be6e;
+    border-radius: 10px;
+    outline: none;
+    margin-right: 10px;
+    padding: 0 10px;
+}
+
+.formBtn{
+    width: 150px;
+    height: 34px;
+    border: 1px solid #02be6e;
+    border-radius: 10px;
+    outline: none;
+    margin-right: 10px;
+    padding: 0 10px;
+    cursor: pointer;
+    
+}
+
+.formBtn:hover{
+    background-color: blue;
+    color: white;
+    border-color: white;
+}

@@ -1,0 +1,12 @@
+.loadBtn{
+    display: block;
+    background-color: #02be6e;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 240px;
+    height: 35px;
+    color: white;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    margin-bottom: 50px;
+}

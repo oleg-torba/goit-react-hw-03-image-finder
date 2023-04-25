@@ -1,0 +1,30 @@
+.cardList{
+    list-style-type: none;
+    transition: box-shadow 0.5s cubic-bezier(.4,0,.2,1);
+    border: 1px solid grey;
+    border-radius: 4px;
+    
+}
+img{
+display: block;
+}
+.gallery{
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    display: flex;
+}
+
+.cardItem{
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.errorTitle{
+    text-align: center;
+    color: orangered;
+    padding: 20px;
+    background-color: lightgray;
+}
+
