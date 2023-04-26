@@ -12,10 +12,14 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
-        <Searchbar onSubmit={this.handleformSubmit} />
-        <ImageInfo searchQuery={this.state.query}/>
-      </div>
+      <>
+        <div>
+          <Searchbar onSubmit={this.handleformSubmit} />
+        </div>
+        <div>
+          <ImageInfo searchQuery={this.state.query} />
+        </div>
+      </>
     );
   }
 }

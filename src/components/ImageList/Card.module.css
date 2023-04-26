@@ -28,3 +28,10 @@ display: block;
     background-color: lightgray;
 }
 
+.spinnerStyle{
+    position: fixed;
+        bottom: 10%; 
+     left: 50%;
+
+}
+

@@ -12,11 +12,12 @@ export class ImageInfo extends Component {
     status: 'idle',
     page: 1,
     totalImages: null,
-    error: null
+    error: null,
   };
   async componentDidUpdate(prevProps, prevState) {
+    console.log('update');
     const { page } = this.state;
-    const {searchQuery} = this.props;
+    const { searchQuery } = this.props;
     if (prevProps.searchQuery !== searchQuery) {
       this.setState({
         images: [],
@@ -24,7 +25,7 @@ export class ImageInfo extends Component {
       });
     }
 
-    if (prevProps.searchQuery !== searchQuery || prevState.page !== this.state.page) {
+    if (prevProps.searchQuery !== searchQuery || prevState.page !== page) {
       this.setState({ status: 'pending' });
       const images = await fetchImages(searchQuery, page);
       if (images.hits.length > 0) {
@@ -32,36 +33,38 @@ export class ImageInfo extends Component {
           images: this.state.images.concat(images.hits),
           totalImages: images.total,
           status: 'resolved',
-          error: null
+          error: null,
+        });
+      } else {
+        this.setState({
+          error: 'No found images',
+          status: 'rejected',
         });
       }
-      else{this.setState({
-        error: 'No found images',
-        status: 'rejected'
-      })
-    }
     }
   }
 
-  loadMore = e => {
-    e.preventDefault();
-    if (this.state.page === Math.ceil(this.state.totalImages / 12)) {
+  loadMore = () => {
+    const { page, totalImages } = this.state;
+    if (page === Math.ceil(totalImages / 12)) {
       return alert('end images');
     }
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
   render() {
-
     const { images, status, error } = this.state;
-    const {searchQuery} = this.props
+    const { searchQuery } = this.props;
 
     return (
-      <><div className={Css.errorContainer}>
-        {error !== null && (
-            <h1 className={Css.errorTitle}>No found images by query: '{searchQuery}'</h1>
-        )}
-      </div>
+      <>
+        <div className={Css.errorContainer}>
+          {error !== null && (
+            <h1 className={Css.errorTitle}>
+              No found images by query: '{searchQuery}'
+            </h1>
+          )}
+        </div>
         <div>
           {status === 'resolved' && (
             <ul className={Css.gallery}>
@@ -80,17 +83,20 @@ export class ImageInfo extends Component {
             </ul>
           )}
         </div>
-        <div>
-          {this.state.totalImages !== images.length && this.state.status === 'resolved' && 
-            status === 'resolved' && <LoadMore onClick={this.loadMore} />}
+        <div className={Css.gallery}>
+          <div>
+            {this.state.totalImages !== images.length &&
+              status === 'resolved' && <LoadMore onClick={this.loadMore} />}
+          </div>
+          <div className={Css.spinnerStyle}>
             {status === 'pending' && <ThreeDots />}
+          </div>
         </div>
-        
       </>
     );
   }
 }
 
 ImageInfo.propTypes = {
-    searchQuery: PropTypes.string.isRequired
-}
+  searchQuery: PropTypes.string.isRequired,
+};
