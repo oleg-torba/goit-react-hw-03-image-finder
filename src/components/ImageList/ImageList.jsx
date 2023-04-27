@@ -32,7 +32,7 @@ export class ImageList extends Component {
 }
 
 ImageList.propTypes = {
-     webformatURL: PropTypes.string, 
-     largeImageURL: PropTypes.string,
-      tags: PropTypes.string,
+     webformatURL: PropTypes.string.isRequired, 
+     largeImageURL: PropTypes.string.isRequired,
+     tags: PropTypes.string.isRequired,
 }

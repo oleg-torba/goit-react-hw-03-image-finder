@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThreeDots } from 'react-loader-spinner';
-import { fetchImages } from 'components/Services/FetchImages';
+import { fetchImages } from 'Services/FetchImages';
 import { ImageList } from 'components/ImageList/ImageList';
 import { LoadMore } from 'components/LoadMore/LoadMore';
 import Css from '../ImageList/Card.module.css';
@@ -66,7 +66,7 @@ export class ImageInfo extends Component {
           )}
         </div>
         <div>
-          {status === 'resolved' && (
+          {images.length > 0 && (
             <ul className={Css.gallery}>
               {images.map(image => {
                 return (

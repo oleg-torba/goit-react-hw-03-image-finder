@@ -30,7 +30,7 @@ display: block;
 
 .spinnerStyle{
     position: fixed;
-        bottom: 10%; 
+        bottom: 0; 
      left: 50%;
 
 }
